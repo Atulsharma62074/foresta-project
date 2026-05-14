@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Montserrat:wght@300;400;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --green-dark:   #052e0f;
+  --green-deep:   #0a4a1c;
+  --green-mid:    #1a7a30;
+  --green-bright: #2db84a;
+  --green-light:  #7ad48a;
+  --gold:         #e8c040;
+  --gold-light:   #f8e880;
+  --cream:        #f5f0e0;
+  --white:        #ffffff;
+  --text-dark:    #0d1f10;
+  --text-mid:     #2a4a2e;
+  --text-muted:   #6a8a6e;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Montserrat', sans-serif; color: var(--text-dark); background: var(--white); overflow-x: hidden; }
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--green-dark); }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@keyframes fadeUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.4)} }
+@keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+@keyframes spin { to { transform:rotate(360deg); } }
