@@ -73,33 +73,17 @@ export default function GemDashboard() {
   const fetchTenders = useCallback(async () => {
     setSpinning(true);
     try {
-      const pages = [0,1,2];
-      const results: Tender[] = [];
-      for (const pg of pages) {
-        try {
-          const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(`https://bidplus.gem.gov.in/rest/gem-bids/getBidsByPage?page=${pg}`)}`;
-          const res = await fetch(proxyUrl, { signal: AbortSignal.timeout(8000) });
-          const data = await res.json();
-          if (data.contents) {
-            const parsed = JSON.parse(data.contents);
-            const items = parsed?.data || (Array.isArray(parsed) ? parsed : []);
-            const today = new Date();
-            items.forEach((t: Record<string,unknown>) => {
-              const title = ((t.item_name || t.itemName || t.bid_title || t.title || '') as string).toLowerCase();
-              const cat = ((t.item_category || t.category || '') as string).toLowerCase();
-              if (PAPER_KEYWORDS.some(kw => title.includes(kw) || cat.includes(kw))) {
-                const endDate = (t.bid_end_date || t.bidEndDate || t.closing_date || '') as string;
-                const daysLeft = endDate ? Math.ceil((new Date(endDate).getTime() - today.getTime()) / 86400000) : null;
-                results.push({ id:(t.bid_number||t.bidNumber||t.id||genId()) as string, title:(t.item_name||t.itemName||t.bid_title||t.title||'Paper Supply') as string, org:(t.ministry||t.ministry_name||t.buyer_name||'Govt Organisation') as string, state:(t.state||'India') as string, quantity:(t.quantity||t.qty||0) as number, unit:(t.uom||t.unit||'Nos') as string, value:(t.estimated_value||t.est_value||null) as number|null, startDate:(t.bid_start_date||t.bidStartDate||'') as string, endDate, daysLeft, category:((t.item_category||t.category||'Stationery') as string).replace(/_/g,' '), isNew:!!((t.bid_start_date||t.bidStartDate) && (today.getTime()-new Date((t.bid_start_date||t.bidStartDate) as string).getTime())<2*86400000) });
-              }
-            });
-          }
-        } catch { /* continue */ }
+      const apiUrl = import.meta.env.VITE_API_URL || 'https://foresta-project.onrender.com';
+      const res = await fetch(`${apiUrl}/api/v1/gem/tenders`);
+      const data = await res.json();
+      if (data.success && data.data.length > 0) {
+        setAllTenders(data.data);
+        applyFilter(data.data, filter, search);
+      } else {
+        const demo = getDemoTenders();
+        setAllTenders(demo);
+        applyFilter(demo, filter, search);
       }
-      const demo = getDemoTenders();
-      const merged = results.length > 0 ? results : demo;
-      setAllTenders(merged);
-      applyFilter(merged, filter, search);
     } catch {
       const demo = getDemoTenders();
       setAllTenders(demo);
