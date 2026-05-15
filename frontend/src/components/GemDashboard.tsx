@@ -73,7 +73,7 @@ export default function GemDashboard() {
   const fetchTenders = useCallback(async () => {
     setSpinning(true);
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'https://foresta-project.onrender.com';
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://foresta-project.onrender.com';
       const res = await fetch(`${apiUrl}/api/v1/gem/tenders`);
       const data = await res.json();
       if (data.success && data.data.length > 0) {
