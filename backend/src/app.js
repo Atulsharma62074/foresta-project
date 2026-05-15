@@ -14,6 +14,7 @@ var productRoutes = require('./routes/product.routes');
 var tenderRoutes  = require('./routes/tender.routes');
 var inquiryRoutes = require('./routes/inquiry.routes');
 var adminRoutes   = require('./routes/admin.routes');
+var gemRoutes     = require('./routes/gem.routes');   // ← ADD
 
 var app = express();
 
@@ -56,6 +57,7 @@ app.use('/api/v1/products',  productRoutes);
 app.use('/api/v1/tenders',   tenderRoutes);
 app.use('/api/v1/inquiries', inquiryRoutes);
 app.use('/api/v1/admin',     adminRoutes);
+app.use('/api/v1/gem',       gemRoutes);              // ← ADD
 
 // ── 404 Handler ───────────────────────────────────────
 app.use(function(req, res) {

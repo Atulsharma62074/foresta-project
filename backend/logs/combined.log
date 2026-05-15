@@ -1,0 +1,8 @@
+{"level":"info","message":"MongoDB connected: localhost","timestamp":"2026-05-15 20:05:47"}
+{"level":"info","message":"Foresta Backend running on port 5000 [undefined]","timestamp":"2026-05-15 20:05:47"}
+{"level":"info","message":"::1 - - [15/May/2026:14:35:59 +0000] \"GET /api/v1/gem/tenders HTTP/1.1\" 200 91 \"-\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36\"","timestamp":"2026-05-15 20:05:59"}
+{"level":"info","message":"::1 - - [15/May/2026:14:35:59 +0000] \"GET /favicon.ico HTTP/1.1\" 404 45 \"-\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36\"","timestamp":"2026-05-15 20:05:59"}
+{"level":"info","message":"MongoDB connected: localhost","timestamp":"2026-05-15 20:15:57"}
+{"level":"info","message":"Foresta Backend running on port 5000 [undefined]","timestamp":"2026-05-15 20:15:57"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [15/May/2026:14:46:04 +0000] \"GET /api/v1/gem/tenders HTTP/1.1\" 200 13840 \"-\" \"curl/7.81.0\"","timestamp":"2026-05-15 20:16:04"}
+{"level":"info","message":"::1 - - [15/May/2026:14:46:18 +0000] \"GET /api/v1/gem/tenders HTTP/1.1\" 200 - \"-\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36\"","timestamp":"2026-05-15 20:16:18"}
